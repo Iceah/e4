@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <button class="bouton" type="button">Retour liste élève</button>
+    <div id="generale">
+        <div id="div_aux" class="left">
+            <h2 class="titre_principal"> Fiche élève </h2>
+            <div id="info_generale" class="transbox">
+                <h2 class="titre_info"> Informations générale : </h2>
+                {% if eleve.avatar is not null %}<img src="{{ eleve.avatar }}" >{% endif %}
+                <p> Prenom :{{ eleve.Prenom }}</p>
+                <p> Nom :{{ eleve.Nom }}</p>
+                <p> Classe :{{ eleve.classe.nom }}</p>
+                <p> Téléphone éleve : {{ eleve.Telephone }}</p>
+                <p> Cursus : </p>
+                <p> Email : {{ eleve.email }}</p>
+                <p> Date de naissance : </p>
+                <p> Adresse : {{ eleve.Adresse1 }} , {{ eleve.Adresse2 }} </p>
+                <p> Code postal : {{ eleve.Cp }}</p>
+                <p> Ville : {{ eleve.Ville }}</p>
+            </div>
+            <div id="notes_semestre" class="transbox">
+                <h2 class= "titre_info"> Notes de ce semestre : </h2>
+                <!--<p> Moyenne élève : </p> Nous devons incérer ici le résultat de la requette php à la base -->
+                <p> Moyenne Détaillé : </p>
+                <!--Ici nous devons retourner le tableau de notes-->
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+{% endblock %}

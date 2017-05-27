@@ -1,0 +1,17 @@
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt))/
+            security: false
+        main:
+            pattern: .*
+            form_login:
+                provider: fos_userbundle
+                use_forward: false
+                failure_path : null
+                remember_me: true
+            logout:       true
+            anonymous:    true

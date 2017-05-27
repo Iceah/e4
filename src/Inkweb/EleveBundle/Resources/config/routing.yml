@@ -1,0 +1,29 @@
+inkweb_eleve_homepage:
+    path:     /eleve/
+    defaults: { _controller: InkwebEleveBundle:Eleve:index }
+
+inkweb_eleve_add:
+    path:     /eleve/add
+    defaults: { _controller: InkwebEleveBundle:Eleve:add  }
+
+inkweb_eleve_del:
+    path:     /eleve/del/{id}
+    defaults: { _controller: InkwebEleveBundle:Eleve:del  }
+    requirements:
+        id: \d+  #Condition requise id en chiffres
+
+inkweb_eleve_view:
+    path:     /eleve/view/{id}
+    defaults: { _controller: InkwebEleveBundle:Eleve:view  }
+
+inkweb_eleve_edit:
+    path:     /eleve/edit/{id}
+    defaults: { _controller: InkwebEleveBundle:Eleve:edit  }
+
+inkweb_classe_homepage:
+    path:   /eleve/classe/
+    defaults: { _controller: InkwebEleveBundle:Classe:index }
+
+inkweb_classe_add:
+    path:   /eleve/classe/add
+    defaults: { _controller: InkwebEleveBundle:Classe:add }

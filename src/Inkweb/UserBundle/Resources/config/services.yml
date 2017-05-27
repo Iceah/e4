@@ -1,0 +1,4 @@
+services:
+#    inkweb_user.example:
+#        class: Inkweb\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

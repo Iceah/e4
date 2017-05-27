@@ -1,3 +1,20 @@
+inkweb_module:
+    resource: "@InkwebModuleBundle/Resources/config/routing.yml"
+    prefix:   /
+
+inkweb_professeur:
+    resource: "@InkwebProfesseurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+inkweb_eleve:
+    resource: "@InkwebEleveBundle/Resources/config/routing.yml"
+    prefix:   /
+
+inkweb_user:
+    resource: "@InkwebUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+

@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Intranet EPSI v2 !{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% stylesheets
+    'bundles/app/css/*'
+    'css/*'
+    filter='cssrewrite'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+</head>
+<body>
+{% block body %}
+    <div id="wrapper">
+        <aside class="left">
+            <div id="logo-bg">
+                <!-- Logo EPSI -->
+            </div>
+            <ul id="navigation">
+                <li class="accueil">Accueil
+                    <ul>
+                        <a href=""><li>Dashboard 1</li></a>
+                        <a href=""><li>Dashboard 2</li></a>
+                        <a href=""><li>Dashboard 3</li></a>
+                    </ul>
+                </li>
+                <li class="messagerie">Messagerie</li>
+                <li class="calendrier">Calendrier</li>
+                <a href=""><li class="modules">Modules</li></a>
+                <a href="{{ path('inkweb_eleve_homepage') }}"><li class="eleves">Eleves</li></a>
+                <li class="notes">Notes</li>
+
+                <!-- Nouveau menu -->
+                {#{% for item in navigation %}#}
+                {#<li><a href="{{ item.href }}">{{ item.titre }}</a></li>#}
+                {#{% endfor %}#}
+            </ul>
+        </aside>
+        <div id="main">
+            <div id="user-menu">
+                <!-- Menu utilisateur -->
+                <form id="search" class="left">
+                    <input type="search" placeholder="Rechercher">
+                </form>
+                <div id="user"><!-- Bloc utilisateur -->
+                    <div id="a"></div>
+                    <div id="usr">
+                        <img src="" id="avatar" class="box-shadow left" />
+                        <div class="left">
+                            <div id="user-name">Bonjour,  !</div>
+                            <div id="grade"></div>
+                        </div>
+                        <div id="exit" class="left"><!-- Bouton de deconnection -->
+                            <a href="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <nav>
+                <!-- Fil d'ariane -->
+            </nav>
+            <div id="aero"></div>
+            <div id="conteneur">
+                <!-- Contenu des bundles -->
+                {% block content %}{% endblock %}
+            </div>
+            <div id="footer-bar" class="box-shadow"></div>
+            <div id="footer" class="box-shadow">Conditions Générales d’Utilisation</div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

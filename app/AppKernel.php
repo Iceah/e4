@@ -16,6 +16,12 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new Inkweb\UserBundle\InkwebUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Inkweb\EleveBundle\InkwebEleveBundle(),
+            new Inkweb\ProfesseurBundle\InkwebProfesseurBundle(),
+            new Inkweb\ModuleBundle\InkwebModuleBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

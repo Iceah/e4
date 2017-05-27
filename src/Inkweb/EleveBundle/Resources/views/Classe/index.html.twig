@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    {%  for classe in list_classe %}
+        {{ classe.Nom }}<br />
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,78 @@
+html,body{margin:0; padding:0; width:100%; height:100%;}
+div{
+	
+}
+#tailleonglets{
+	margin:0 auto; padding:0;width:100%; height:100%;
+}
+#onglets {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #F7F7F7;
+	padding: 0;
+	margin:0;
+	overflow: hidden
+}
+#onglets > li {
+	list-style: none;
+	float: left;
+	/*margin: 0 0.4em 0 0;*/
+	padding:10px;
+	color: inherit;
+	background-color: inherit;
+}
+#onglets > li > a:first-child {
+	color: inherit;
+	background-color: inherit;
+	text-decoration: none;
+	padding: 0;
+}
+#onglets > li > a:first-child:hover {
+	text-decoration: none;
+}
+#onglets > li > div {
+
+	position: fixed;
+	display: block;
+	top:13.7em;left: 0;
+
+	color: inherit;
+	background-color: inherit;
+
+	margin: 0 0 0 300px ;
+	padding: 0;
+
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	overflow-y: auto;
+}
+#onglets > li:target > div {
+	z-index: 3;
+}
+#onglets > li:not(:target) {
+	opacity: 0.5;
+}
+#onglets > li:not(:target):hover {
+	opacity: 1.0;
+}
+#onglets > li:not(:target) > div {
+	
+}
+#onglets > li:not([id]) {
+	display: block;
+	opacity: 1.0;
+}
+#onglets > li:not([id]) > div {
+	z-index: 2;
+}
+#onglets #B1 { background-color: #108DA5; color: white;}
+#onglets #B2 { background-color: #E9B62C; color: white;}
+#onglets #B3 { background-color: #419C44; color: white;}
+#onglets #I4 { background-color: #841F9C; color: white;}
+#onglets #I5 { background-color: #F6734A; color: white;}
+@media screen and (max-width:1200px)
+{
+    #onglets > li > div {margin: 0 0 0 200px;}
+}

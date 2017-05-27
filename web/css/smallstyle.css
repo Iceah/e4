@@ -1,0 +1,208 @@
+@media screen and (min-width: 200px) and(max-width:1024px){
+/* Gabarit */
+body {background: url(../img/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */;
+}
+#wrapper{overflow:auto;width: 1300px; margin:5% auto;}
+/* Partie gauche */
+#user{
+    background-image:  linear-gradient(to top right, 
+        #55A0BD, #19677E);
+    height: 150px;
+    border: #000 1px solid;
+    box-shadow:1px 1px 1px #333333;
+}
+#sidebar {
+    background-color: rgba(255,255,255,0.8);
+    max-width: 250px;
+    border: #000 1px solid;
+    box-shadow:3px 3px 3px #333333;
+    border-radius: 5px 5px 10px 10px;
+}
+.transbox {
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+/* Partie centrale */
+#div-principal { 
+}
+#search-header {
+    background-color: #00B9D1;
+    height: 60px;
+    border: #000 1px solid;
+    box-shadow:3px 3px 3px #333333;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+#search-bg{
+    background-color: #4CD0E0;
+    border: #000 1px solid;
+    height: 40px;
+    box-shadow:1px 1px 1px #333333;
+    margin: 9px 5px 0 5px;
+}
+#search-bg img {
+    float: right;
+    margin: 4px 10px;
+}
+#conteneur-principal {
+    width:auto;
+    margin: 20px auto;
+}
+#footer-bar{
+    background-color: #000;
+    height: 1px;
+    box-shadow:1px 1px 1px #333333;
+    margin: 10px 0;
+}
+#footer{
+    height: 20px;
+    background-image: linear-gradient(to top right,#529DBA,#1D6B83);border-top: #000 1px solid;
+    text-align: center;
+    color: #fff;
+    box-shadow:3px 3px 3px #333333;
+}
+/* Elements généraux */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+/* Navigation */
+nav ul{
+    list-style: none;
+    padding:10px 0 10px 0;
+}
+nav ul li img {
+    width: 20px;
+    margin : 0 5px;
+}
+nav ul li{
+    height: 30px;
+    color: #fff;
+    border-bottom: #000 1px solid;
+    line-height: 30px;
+}
+.accueil {background-image: linear-gradient(to top right,#00B9D1,#1D6B83);border-top: #000 1px solid;}
+.messagerie{background-image: linear-gradient(to top right,#CC9966,#FFCC00);}
+.calendrier{background-image: linear-gradient(to top right,#4BAF50,#398E3B);}
+.modules{background-image: linear-gradient(to top right,#9E26B0,#681888);}
+.eleve{background-image: linear-gradient(to top right,#FF6666,#EF7D36);}
+.notes{background-image: linear-gradient(to top right,#DD3141,#FF6666);}
+
+/* Elements spécifiques */
+#user {
+    width:250px;height:100px;
+    border-radius: 5px 5px 0 0;
+}
+#user-avatar{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+#avatar {
+    width:50px;
+    margin: 10px;
+    box-shadow:2px 2px 2px #333333;
+}
+#user-name {            /* Postionnement nom utilisateur */
+    width: 120px;
+    margin: 40px 0;
+    float: left;
+    color: #fff;
+}
+#exit {
+    height: 50px;
+}
+#exit img {
+    width: 50px;
+    float: left;
+    margin-left: 40px;
+}
+#user-exit{
+    width: 160px;
+    float: left;
+}
+#logo {
+    width: 150px;
+    margin: 20px 50px;
+}
+
+/* Pages specialisées */
+#homegroup { /* Testeur */ 
+    height: 350px;
+}
+#dashboard {
+    width: 65%;
+    margin: 10px 4px 0 8px;
+    float: left;
+    border: 1px #000 solid;
+    border-radius:5px 5px 10px 10px;
+    box-shadow:3px 3px 3px #333333;
+}
+#dashup{
+    height: 200px;
+    box-shadow:1px 1px 1px #333333;
+    border-radius: 5px 5px 0 0;
+}
+#dashdown{
+    height: 100px;
+    box-shadow:1px 1px 1px #333333;
+    background-color: rgba(255,255,255,0.6);
+    border-radius: 0 0 10px 10px;
+}
+#calendrier {
+    width: 25%;
+    float:left;
+    margin: 10px 8px 0 4px;
+    border: 1px #000 solid;
+    border-radius:5px 5px 10px 10px;
+    box-shadow:3px 3px 3px #333333;
+}
+#calup{
+    height: 200px;
+    box-shadow:1px 1px 1px #333333;
+    /* background-color: #419C44;*/
+    background-color: rgba(255,255,255,0.6);
+}
+#caldown{
+    height: 100px;
+    box-shadow:1px 1px 1px #333333;
+    background-color: #398E3B;
+    border-radius: 0 0 10px 10px
+}
+#carregroup {
+    min-height: 150px;
+    overflow: auto;
+    width:auto;
+    margin: 0 115px;
+}
+.carre {
+    margin: 10px 20px;
+    float: left;
+    height: 150px;
+    width: 150px;
+    box-shadow:5px 5px 5px #333333;
+    border: 1px #000 solid;
+    border-radius: 5px 5px 10px 10px;
+}
+.carreup{height: 100px;border-radius: 5px 5px 0 0;}
+.carredown{
+    height: 50px;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 0 10px 10px;
+}
+.carre img {width: 100px;margin: 0 20px;}
+/* Couleurs basses des cubes */
+.messdown {background-color:#ffcc00;}
+.moduldown {background-color:#681888;}
+.elvdown {background-color:#ff751a;}
+.notesdown {background-color:#DD3141;}
+.clear{clear:both;}
+    
+}

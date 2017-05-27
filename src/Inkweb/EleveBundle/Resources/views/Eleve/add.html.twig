@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h3>Formulaire d'ajout d'élève</h3>
+
+
+    <div class="well">
+
+        {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+        {# Affichage des erreurs #}
+        {{ form_errors(form) }}
+
+        {# Génération d'un groupe label + input #}
+        <div class="form-group">
+            {# Génération du label #}
+            {{ form_label(form.ine,"INE de l'étudiant",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {# Affichage des erreurs spécifique au champ #}
+            {{ form_errors(form.ine) }}
+            <div class="col-sm-4">
+                {# Génération de l'input #}
+                {{ form_widget(form.ine,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.numsecusocial,"Numéro de sécurité sociale",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.numsecusocial) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.numsecusocial,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.nom,"Nom de l'étudiant",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.nom) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.prenom,"Prénom de l'étudiant",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.prenom) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.prenom,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.telephone,"Numéro de téléphone",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.telephone) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.telephone,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.adresse1,"Adresse principale",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.adresse1) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.adresse1,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.adresse2,"Adresse complémentaire",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.adresse2) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.adresse2,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.cp,"Code postal",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.cp) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.cp,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.ville,"Ville",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.ville) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.ville,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+
+        {#<div class="form-group">
+            {{ form_label(form.classe,"Classe de l'étudiant",{'label_attr':{'class':'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.classe) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.classe,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>#}
+
+        {# Génération du label + error + widget pour un champ #}
+        {{ form_row(form.ine) }}
+        {{ form_row(form.numsecusocial) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.adresse1) }}
+        {{ form_row(form.adresse2) }}
+        {{ form_row(form.cp) }}
+        {{ form_row(form.ville) }}
+        {#{{ form_row(form.classe) }}#}
+
+
+        {# Génération automatique des champs pas encore écrits.
+           Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+           et tous les champs cachés (type « hidden »). #}
+        {{ form_rest(form) }}
+
+
+        {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+        {{ form_widget(form.enregistrer, {'attr': {'class': 'btn btn-primary'}}) }}
+
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
