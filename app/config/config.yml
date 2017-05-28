@@ -83,3 +83,34 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+
+bazinga_faker:
+    locale: fr_FR
+    orm:  doctrine
+    entities:
+        Inkweb\EleveBundle\Entity\Eleve:
+            number: 10
+            custom_formatters:
+                Avatar: { method: imageUrl, parameters: ['640','480'] }
+                NumSecuSocial: { method: numberBetween, parameters: ['1000000','200000'] }
+                Nom: {method: lastName}
+                Prenom: {method: firstName}
+                Telephone: {method: phoneNumber}
+                Cp : {method: numberBetween, parameters: ['01000','99999'] }
+        Inkweb\ProfesseurBundle\Entity\Professeur:
+            number: 10
+            custom_formatters:
+                Avatar: { method: imageUrl, parameters: ['640','480'] }
+                NumSecuSocial: { method: numberBetween, parameters: ['1000000','200000'] }
+                Nom: {method: lastName}
+                Prenom: {method: firstName}
+                Telephone: {method: phoneNumber}
+                Cp : {method: numberBetween, parameters: ['01000','99999'] }

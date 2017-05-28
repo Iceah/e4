@@ -3,6 +3,7 @@
 namespace Inkweb\ModuleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Inkweb\EleveBundle\Entity\Eleve;
 
 /**
  * Evaluation
@@ -58,6 +59,14 @@ class Evaluation
      */
 
     private $module;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Inkweb\EleveBundle\Entity\Eleve")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $eleve;
+
+
 
     /**
      * Get id
@@ -181,6 +190,28 @@ class Evaluation
 
     {
         return $this->module;
+    }
+
+    /**
+     * Set Eleve
+     */
+
+    public function setEleve(Eleve $eleve)
+
+    {
+
+        $this->eleve = $eleve;
+        return $this;
+
+    }
+
+    /**
+     * Get Eleve
+     */
+    public function getEleve()
+
+    {
+        return $this->eleve;
     }
 
 

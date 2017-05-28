@@ -7,3 +7,34 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    admin.classe:
+            class: Inkweb\EleveBundle\Admin\ClasseAdmin
+            arguments: [~, Inkweb\EleveBundle\Entity\Classe, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Classe }
+
+    admin.eleve:
+            class: Inkweb\EleveBundle\Admin\EleveAdmin
+            arguments: [~, Inkweb\EleveBundle\Entity\Eleve, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Eleve }
+    admin.professeur:
+            class: Inkweb\ProfesseurBundle\Admin\ProfesseurAdmin
+            arguments: [~, Inkweb\ProfesseurBundle\Entity\Professeur, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Professeur }
+    admin.module:
+            class: Inkweb\ModuleBundle\Admin\ModuleAdmin
+            arguments: [~, Inkweb\ModuleBundle\Entity\Module, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Module }
+    admin.cours:
+            class: Inkweb\ModuleBundle\Admin\CoursAdmin
+            arguments: [~, Inkweb\ModuleBundle\Entity\Cours, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Cours }
+    admin.ue:
+            class: Inkweb\ModuleBundle\Admin\UEAdmin
+            arguments: [~, Inkweb\ModuleBundle\Entity\UE, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: UE }

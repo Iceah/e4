@@ -1,3 +1,7 @@
+inkweb_dashboard:
+    resource: "@InkwebDashboardBundle/Resources/config/routing.yml"
+    prefix:   /
+
 inkweb_module:
     resource: "@InkwebModuleBundle/Resources/config/routing.yml"
     prefix:   /
@@ -18,3 +22,11 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

@@ -3,7 +3,7 @@
 namespace Inkweb\ModuleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ProfesseurBundle\Entity\Professeur;
+use Inkweb\ProfesseurBundle\Entity\Professeur;
 
 /**
  * Module
@@ -57,7 +57,21 @@ class Module
      */
     private $dateFin;
 
+    /**
 
+     * @ORM\ManyToOne(targetEntity="Inkweb\ProfesseurBundle\Entity\Professeur")
+
+     * @ORM\JoinColumn(nullable=false)
+
+     */
+
+    private $professeur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Inkweb\ModuleBundle\Entity\UE")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ue;
 
     /**
      * Get id
@@ -184,6 +198,30 @@ class Module
         return $this->dateFin;
     }
 
+    public function setProfesseur(Professeur $professeur)
+
+    {
+        $this->professeur = $professeur;
+        return $this;
+    }
+
+
+    public function getProfesseur()
+
+    {
+        return $this->professeur;
+    }
+
+    public function setUe(ue $ue){
+        $this->ue = $ue;
+        return $this;
+    }
+
+    public function getUe()
+
+    {
+        return $this->ue;
+    }
 
 
 }

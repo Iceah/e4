@@ -37,10 +37,6 @@ class Classe
      */
     private $annee;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Inkweb\ModuleBundle\Entity\Module",cascade={"persist"})
-     */
-    private $modules;
 
 
     /**
@@ -99,19 +95,4 @@ class Classe
         return $this->annee;
     }
 
-    public function __construct()
-    {
-        $this->date =new \DateTime();
-        $this->modules = new ArrayCollection();
-    }
-    public function addModule(Module $module){
-        $this->modules[] = $module;
-        return $this;
-    }
-    public function removeModule(Module $module){
-        $this->modules->removeElement($module);
-    }
-    public function getModules(){
-        return $this->modules;
-    }
 }

@@ -1,0 +1,3 @@
+inkweb_dashboard_homepage:
+    path:     /
+    defaults: { _controller: InkwebDashboardBundle:Default:index }
