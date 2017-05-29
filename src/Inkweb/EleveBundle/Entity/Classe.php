@@ -38,6 +38,11 @@ class Classe
     private $annee;
 
 
+    /*
+     * @ORM\OneToMany(targetEntity="Eleve", mappedBy="nom',orphanRemoval = "false", cascade={"all"})
+     */
+    private $eleve;
+
 
     /**
      * Get id
@@ -95,4 +100,5 @@ class Classe
         return $this->annee;
     }
 
+    
 }

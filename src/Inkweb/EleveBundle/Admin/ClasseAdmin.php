@@ -15,6 +15,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 
 class ClasseAdmin extends AbstractAdmin
 {
@@ -23,13 +24,15 @@ class ClasseAdmin extends AbstractAdmin
         $formMapper
             ->add('nom','text')
             ->add('annee','date')
-            ->with('Eleves')
-            ->add('classe','sonata_type_model',array(
-                'class' => 'Inkweb\EleveBundle\Entity\Eleve',
-                'property' => 'nom',
-                'multiple' => true,
-
-            ))
+            ->add('eleve','sonata_type_collection',array(
+                'required'=>true,
+                'cascade_validation' => true,
+                    'by_reference' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                )
+            )
         ;
     }
     protected function configureDatagridFilters(DatagridMapper $datagridMapper){
@@ -40,5 +43,11 @@ class ClasseAdmin extends AbstractAdmin
             ->addIdentifier('nom')
             ->add('date')
         ;
+    }
+    public function toString($object)
+    {
+        return $object instanceof Eleve
+            ? $object->getTitle()
+            : 'Classe';
     }
 }

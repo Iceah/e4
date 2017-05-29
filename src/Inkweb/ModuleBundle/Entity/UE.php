@@ -24,13 +24,6 @@ class UE
     /**
      * @var string
      *
-     * @ORM\Column(name="codeue", type="string", length=255, unique=true)
-     */
-    private $codeue;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nomue", type="string", length=255)
      */
     private $nomue;
@@ -46,29 +39,6 @@ class UE
         return $this->id;
     }
 
-    /**
-     * Set codeue
-     *
-     * @param string $codeue
-     *
-     * @return UE
-     */
-    public function setCodeue($codeue)
-    {
-        $this->codeue = $codeue;
-
-        return $this;
-    }
-
-    /**
-     * Get codeue
-     *
-     * @return string
-     */
-    public function getCodeue()
-    {
-        return $this->codeue;
-    }
 
     /**
      * Set nomue

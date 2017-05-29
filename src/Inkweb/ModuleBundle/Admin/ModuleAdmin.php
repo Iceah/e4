@@ -27,7 +27,7 @@ class ModuleAdmin extends AbstractAdmin
             ))
             ->add('ue','sonata_type_model',array(
                 'class' => 'Inkweb\ModuleBundle\Entity\UE',
-                'property' => 'codeue'
+                'property' => 'nomue'
             ))
             ->add('codeMat','text')
             ->add('coefMat','number')
@@ -46,7 +46,7 @@ class ModuleAdmin extends AbstractAdmin
             ))
             ->add('ue',null,array(),'entity',array(
                 'class' => 'Inkweb\ModuleBundle\Entity\UE',
-                'choice_label' => 'codeue',
+                'choice_label' => 'nomue',
             ))
             ->add('dateDebut')
             ->add('dateFin')
@@ -61,10 +61,6 @@ class ModuleAdmin extends AbstractAdmin
                 'class' => 'Inkweb\ProfesseurBundle\Entity\Professeur',
                 'choice_label' => 'nom',
             ))
-            ->add('ue',null,array(),'entity',array(
-                'class' => 'Inkweb\ModuleBundle\Entity\UE',
-                'choice_label' => 'codeue',
-            ))
             ->add('coef')
             ->add('codeMat','text')
             ->add('coefMat','number')
@@ -77,9 +73,7 @@ class ModuleAdmin extends AbstractAdmin
 
     public function toString($object)
     {
-        return $object instanceof Module
-            ? $object->getTitle()
-            : 'Module';
+        return "module";
     }
 
 

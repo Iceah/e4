@@ -20,7 +20,6 @@ class UEAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper){
         // Liste des champs disponibles dans le formulaire d'édition
         $formMapper
-            ->add('codeue','text')
             ->add('nomue','text')
         ;
     }
@@ -28,7 +27,6 @@ class UEAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper){
         // Liste des filtres disponibles dans la vue en liste
         $datagridMapper
-            ->add('codeue')
             ->add('nomue')
         ;
     }
@@ -36,8 +34,7 @@ class UEAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper){
         // Liste des champs disponibles dans le formulaire en liste
         $listMapper
-            ->addIdentifier('codeue')
-            ->add('nomue')
+            ->addIdentifier('nomue')
         ;
 
 
@@ -45,9 +42,7 @@ class UEAdmin extends AbstractAdmin
 
     public function toString($object)
     {
-        return $object instanceof Module
-            ? $object->getTitle()
-            : 'Module';
+        return 'nomue';
     }
 
 

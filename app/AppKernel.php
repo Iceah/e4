@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new Inkweb\EleveBundle\InkwebEleveBundle(),
             new Inkweb\ProfesseurBundle\InkwebProfesseurBundle(),
             new Inkweb\ModuleBundle\InkwebModuleBundle(),
-            new ZorbusAdminThemeBundle\ZorbusAdminThemeBundle(),
+            #new ZorbusAdminThemeBundle\ZorbusAdminThemeBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new abdielcs\ExpandedCollectionBundle\ExpandedCollectionBundle(),
 
