@@ -24,15 +24,6 @@ class ClasseAdmin extends AbstractAdmin
         $formMapper
             ->add('nom','text')
             ->add('annee','date')
-            ->add('eleve','sonata_type_collection',array(
-                'required'=>true,
-                'cascade_validation' => true,
-                    'by_reference' => false,
-                ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                )
-            )
         ;
     }
     protected function configureDatagridFilters(DatagridMapper $datagridMapper){
@@ -46,8 +37,6 @@ class ClasseAdmin extends AbstractAdmin
     }
     public function toString($object)
     {
-        return $object instanceof Eleve
-            ? $object->getTitle()
-            : 'Classe';
+        return 'classe';
     }
 }

@@ -1,19 +1,14 @@
+# Affichage liste classe
 inkweb_eleve_homepage:
-    path:     /eleve/
-    defaults: { _controller: InkwebEleveBundle:Eleve:index }
+    path:     /classe/
+    defaults: { _controller: InkwebEleveBundle:Classe:index }
 
+# Affichage liste des élèves par classe
+inkweb_eleve_liste_classe:
+    path:     /classe/id/{id}
+    defaults: { _controller: InkwebEleveBundle:Classe:listclass}
+
+# Affichage d'un élève
 inkweb_eleve_view:
     path:     /eleve/view/{id}
     defaults: { _controller: InkwebEleveBundle:Eleve:view  }
-
-inkweb_eleve_edit:
-    path:     /eleve/edit/{id}
-    defaults: { _controller: InkwebEleveBundle:Eleve:edit  }
-
-inkweb_classe_homepage:
-    path:   /eleve/classe/
-    defaults: { _controller: InkwebEleveBundle:Classe:index }
-
-inkweb_classe_addMass:
-    path:   /eleve/classe/addMass
-    defaults: { _controller: InkwebEleveBundle:Classe:addMass }

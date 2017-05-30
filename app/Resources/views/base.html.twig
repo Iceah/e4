@@ -2,75 +2,87 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Intranet EPSI v2 !{% endblock %}</title>
+    <title>{% block title %}Intranet EPSI v3 !{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    {% stylesheets
-    'bundles/app/css/*'
-    'css/*'
-    filter='cssrewrite'
-    %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    {% block stylesheets %}
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/sb-admin-2.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/liste_eleve.css') }}" />
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="{{ asset('css/vendor/jquery/jquery.min.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="{{ asset('css/vendor/metisMenu/metisMenu.min.js') }}"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="{{ asset('css/vendor/raphael/raphael.min.js') }}"></script>
+        <script src="{{ asset('css/vendor/morrisjs/morris.min.js') }}"></script>
+        <script src="{{ asset('css/data/morris-data.js') }}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="{{ asset('css/dist/js/sb-admin-2.js') }}"></script>
+
+
+
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+        <!-- jQuery -->
+
+    <![endif]-->
 </head>
 <body>
 {% block body %}
     <div id="wrapper">
-        <aside class="left">
-            <div id="logo-bg">
-                <!-- Logo EPSI -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">EPSI ENT</a>
             </div>
-            <ul id="navigation">
-                <li class="accueil">Accueil
-                    <ul>
-                        <a href=""><li>Dashboard 1</li></a>
-                        <a href=""><li>Dashboard 2</li></a>
-                        <a href=""><li>Dashboard 3</li></a>
-                    </ul>
-                </li>
-                <li class="messagerie">Messagerie</li>
-                <li class="calendrier">Calendrier</li>
-                <a href=""><li class="modules">Modules</li></a>
-                <a href="{{ path('inkweb_eleve_homepage') }}"><li class="eleves">Eleves</li></a>
-                <li class="notes">Notes</li>
+            <!-- /.navbar-header -->
 
-                <!-- Nouveau menu -->
-                {#{% for item in navigation %}#}
-                {#<li><a href="{{ item.href }}">{{ item.titre }}</a></li>#}
-                {#{% endfor %}#}
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    Dashboard
+                </li>
+                <li class="dropdown">
+                    <a href="{{  path('inkweb_module_homepage') }}"> Modules</a>
+                </li>
+                <li class="dropdown">
+                    Mail
+                </li>
+                <li class="dropdown">
+                    <a href="{{ path('inkweb_eleve_homepage') }}">Eleves</a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ path('sonata_admin_dashboard') }}">Administration</a>
+                </li>
             </ul>
-        </aside>
-        <div id="main">
-            <div id="user-menu">
-                <!-- Menu utilisateur -->
-                <form id="search" class="left">
-                    <input type="search" placeholder="Rechercher">
-                </form>
-                <div id="user"><!-- Bloc utilisateur -->
-                    <div id="a"></div>
-                    <div id="usr">
-                        <img src="" id="avatar" class="box-shadow left" />
-                        <div class="left">
-                            <div id="user-name">Bonjour,  !</div>
-                            <div id="grade"></div>
-                        </div>
-                        <div id="exit" class="left"><!-- Bouton de deconnection -->
-                            <a href="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <nav>
-                <!-- Fil d'ariane -->
-            </nav>
-            <div id="aero"></div>
-            <div id="conteneur">
-                <!-- Contenu des bundles -->
-                {% block content %}{% endblock %}
-            </div>
-            <div id="footer-bar" class="box-shadow"></div>
-            <div id="footer" class="box-shadow">Conditions Générales d’Utilisation</div>
+        </nav>
+        <!-- /.sidebar-collapse -->
+
+        <div id="page-wrapper" style="min-height: 912px">
+            <!-- Contenu des bundles -->
+            {% block content %}{% endblock %}
         </div>
     </div>
 {% endblock %}

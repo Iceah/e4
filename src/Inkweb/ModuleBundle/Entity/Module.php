@@ -74,6 +74,13 @@ class Module
     private $ue;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="avancement", type="integer")
+     */
+    private $avancement;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -223,5 +230,27 @@ class Module
         return $this->ue;
     }
 
+    /**
+     * Set avancement
+     *
+     * @param int $avancement
+     * @return Module
+     */
+    public function setAvancement($avancement)
+    {
+        $this->avancement = $avancement;
+
+        return $this;
+    }
+
+    /**
+     * Get avancement
+     *
+     * @return int
+     */
+    public function getAvancement()
+    {
+        return $this->avancement;
+    }
 
 }

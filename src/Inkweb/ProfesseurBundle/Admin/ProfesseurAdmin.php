@@ -8,7 +8,7 @@
 
 namespace Inkweb\ProfesseurBundle\Admin;
 
-
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Inkweb\ProfesseurBundle\Entity\Professeur;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -31,6 +31,15 @@ class ProfesseurAdmin extends AbstractAdmin
                 ->add('ville','text')
                 ->add('avatar','text')
                 ->add('dateembauche','date')
+                ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+                ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+                ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+                    'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
+                    'options' => array('translation_domain' => 'FOSUserBundle'),
+                    'first_options' => array('label' => 'form.password'),
+                    'second_options' => array('label' => 'form.password_confirmation'),
+                    'invalid_message' => 'fos_user.password.mismatch',
+                ))
             ->end()
         ;
     }
@@ -55,9 +64,7 @@ class ProfesseurAdmin extends AbstractAdmin
 
     public function toString($object)
     {
-        return $object instanceof Professeur
-            ? $object->getTitle()
-            : 'Professeur';
+        return "Professeur";
     }
 
 

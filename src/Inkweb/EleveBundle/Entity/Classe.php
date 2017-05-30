@@ -39,9 +39,9 @@ class Classe
 
 
     /*
-     * @ORM\OneToMany(targetEntity="Eleve", mappedBy="nom',orphanRemoval = "false", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Inkweb\EleveBundle\Entity\Eleve", mappedBy="nom")
      */
-    private $eleve;
+    private $eleves;
 
 
     /**
@@ -100,5 +100,42 @@ class Classe
         return $this->annee;
     }
 
+    public function __construct()
+
+    {
+
+        $this->eleves = new ArrayCollection();
+
+        // ...
+
+    }
+
+
+    public function addEleve(Eleve $eleve)
+
+    {
+
+        $this->eleves[] = $eleve;
+        $eleve->setNom($this);
+
+    }
+
+
+    public function removeEleve(Eleve $eleve)
+
+    {
+
+        $this->eleves->removeElement($eleve);
+
+    }
+
+
+    public function getEleves()
+
+    {
+
+        return $this->eleves;
+
+    }
     
 }

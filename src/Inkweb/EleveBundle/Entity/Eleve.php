@@ -22,7 +22,8 @@ class Eleve extends User
     private $ine;
 
     /**
-     * @ORM\OneToOne(targetEntity="Inkweb\EleveBundle\Entity\Classe",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Inkweb\EleveBundle\Entity\Classe",inversedBy="eleves")
+     * @ORM\JoinColumn(nullable=true)
      */
     private  $classe;
 

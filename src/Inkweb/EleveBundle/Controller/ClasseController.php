@@ -17,35 +17,12 @@ class ClasseController extends Controller
 {
     // Récupère la liste des classes
     public function indexAction(){
+        // Liste de toutes les classes
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('InkwebEleveBundle:Classe');
-        $list_classe = $repository->findAll();
-        return $this->render('InkwebEleveBundle:Classe:index.html.twig',array('list_classe' => $list_classe));
-    }
-
-    // Attribuer des élèves à une classe
-    public function addMassAction(Request $request){
-        // Récupération de la liste d'élève
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('InkwebEleveBundle:Eleve');
-        $liste_eleve = $repository->findBy(
-            array('classe' => null));
-
-        // Création du formulaire d'attribution
-
-        $form = $this->get('form.factory')->create(ElevesType::class,$liste_eleve);
-
-        if ($request->isMethod('POST')&& $form->handleRequest($request)->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($liste_eleve);
-            $em->flush();
-            return $this->render('InkwebEleveBundle:Classe:liste_eleve.html.twig',array('liste_eleve' => $liste_eleve));
-        }
-        return $this->render('InkwebEleveBundle:Classe:liste_eleve.html.twig',array('liste_eleve' => $liste_eleve, 'form' => $form->createView(),
-        ));
-
+        $classes = $repository->findAll();
+        return $this->render('InkwebEleveBundle:Classe:index.html.twig',array('list_classe'=>$classes));
     }
 
     public function editAction($id, Request $request){
@@ -70,5 +47,25 @@ class ClasseController extends Controller
             'form' => $form->createView(),
         ));
 
+    }
+
+    public function listclassAction($id){
+        // Liste des élèves par classe
+        $repository = $this->getDoctrine()->getManager()->getRepository('InkwebEleveBundle:Eleve');
+        $liste_eleves_classe = $repository->findBy(
+            array('classe' => $id),
+            array('nom' => 'desc')
+        );
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('InkwebEleveBundle:Classe');
+        $classes = $repository->findAll();
+
+        return $this->render('InkwebEleveBundle:Classe:liste_classe.html.twig',
+            array(
+                'id'=>$id,
+                'liste_eleve'=> $liste_eleves_classe,
+                'list_classe' => $classes
+            ));
     }
 }

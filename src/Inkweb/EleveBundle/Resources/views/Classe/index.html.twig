@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+<div id="tailleonglets_list_eleve">
+    <ul id="onglets_list_eleve">
+
     {%  for classe in list_classe %}
-        {{ classe.Nom }}<br />
+        <li id="{{ classe.Nom }}">
+            <a href="{{ path ('inkweb_eleve_liste_classe',{'id': classe.Id}) }}">{{ classe.Nom }}</a>
+            {% block eleves %}{% endblock %}
+        </li>
     {% endfor %}
+
+    </ul>
+</div>
 {% endblock %}

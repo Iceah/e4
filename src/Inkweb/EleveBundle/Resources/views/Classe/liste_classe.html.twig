@@ -1,0 +1,11 @@
+{% extends 'InkwebEleveBundle:Classe:index.html.twig' %}
+{% block  eleves %}
+<div>
+    <h1>Liste des élèves</h1>
+    {% for eleve in liste_eleve %}
+        <a href="{{ path ('inkweb_eleve_view',{'id': eleve.Id} ) }}">
+            {{ eleve.Nom }} {{ eleve.Prenom }}
+        </a><br />
+    {%  endfor %}
+</div>
+{% endblock %}

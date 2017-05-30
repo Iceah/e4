@@ -1,3 +1,9 @@
 inkweb_module_homepage:
-    path:     /
-    defaults: { _controller: InkwebModuleBundle:Default:index }
+    path:     /modules/
+    defaults: { _controller: InkwebModuleBundle:Module:index }
+inkweb_module_view:
+    path:     /modules/view/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:view }
+inkweb_module_add:
+    path:     /modules/add/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:addCours }

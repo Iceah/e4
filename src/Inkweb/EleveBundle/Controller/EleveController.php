@@ -10,14 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EleveController extends Controller
 {
-    // Liste des étudiants
-    public function indexAction() {
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('InkwebEleveBundle:Eleve');
-        $list_eleve = $repository->findAll();
-        return $this->render('InkwebEleveBundle:Eleve:index.html.twig',array('list_eleve' => $list_eleve));
-    }
     // Modifier un étudiant
     public function editAction($id, Request $request){
         /*
@@ -49,12 +41,20 @@ class EleveController extends Controller
             ->getManager()
             ->getRepository('InkwebEleveBundle:Eleve');
         $eleve = $repository->find($id);
+
+        // Liste de toutes les classes
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('InkwebEleveBundle:Classe');
+        $classes = $repository->findAll();
         if (null === $eleve){
             throw new NotFoundHttpException("L'élève d'id " . $id. " n'existe pas");
         }
         return $this->render(
             'InkwebEleveBundle:Eleve:view.html.twig',
-            array('id' => $id, 'eleve' => $eleve) // On passe les variables souhaitées dans le twig via l'array
+            array('id' => $id, 'eleve' => $eleve,
+                'list_classe' => $classes
+                ) // On passe les variables souhaitées dans le twig via l'array
         );
     }
 
