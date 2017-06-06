@@ -2,6 +2,7 @@
 
 namespace Inkweb\ModuleBundle\Form;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use function Sodium\add;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,30 +13,28 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EvaluationType extends AbstractType
 {
+    public function __construct(EntityManager $em)
+    {
+        $this->entityManager = $em;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date',DateType::class)
-            ->add('module',EntityType::class,array(
-                'class'=>'InkwebModuleBundle:Module',
-                'choice_label' => 'nomMat',
-                'multiple' => false
-            ))
-            ->add('classe',EntityType::class,array(
-                'class'=>'InkwebEleveBundle:Classe',
-                'choice_label' => 'nom',
-                'multiple' => false
-            ))
-            ->add('Enregistrer', SubmitType::class)
-            ;
+            ->add('note');
+        $listener = new EleveListener($builder->getFormFactory(),$this->entityManager);
+        $builder->addEventSubscriber($listener);
     }
+
     
     /**
      * {@inheritdoc}
@@ -51,7 +50,7 @@ class EvaluationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'inkweb_modulebundle_cours';
+        return 'inkweb_modulebundle_evaluation';
     }
 
 

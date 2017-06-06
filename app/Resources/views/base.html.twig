@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{asset('css/sb-admin-2.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/liste_eleve.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/user-menu.css') }}" />
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="{{ asset('css/vendor/jquery/jquery.min.js') }}"></script>
@@ -26,7 +27,7 @@
         <script src="{{ asset('css/vendor/raphael/raphael.min.js') }}"></script>
         <script src="{{ asset('css/vendor/morrisjs/morris.min.js') }}"></script>
         <script src="{{ asset('css/data/morris-data.js') }}"></script>
-
+        <script type="text/javascript" src="{{ asset('css/jquery.js') }}"></script>
         <!-- Custom Theme JavaScript -->
         <script src="{{ asset('css/dist/js/sb-admin-2.js') }}"></script>
 
@@ -68,7 +69,7 @@
                     <a href="{{  path('inkweb_module_homepage') }}"> Modules</a>
                 </li>
                 <li class="dropdown">
-                    Mail
+                    <a href="https://outlook.office365.com/"> Mail</a>
                 </li>
                 <li class="dropdown">
                     <a href="{{ path('inkweb_eleve_homepage') }}">Eleves</a>
@@ -78,6 +79,7 @@
                 </li>
             </ul>
         </nav>
+        {{ include("InkwebUserBundle::user_menu.html.twig") }}
         <!-- /.sidebar-collapse -->
 
         <div id="page-wrapper" style="min-height: 912px">

@@ -1,0 +1,14 @@
+
+<div id="user"><!-- Bloc utilisateur -->
+    <div id="a"></div>
+    <div id="usr">
+        {# <img src="<?php url_https(); ?>/img/users/<?php echo htmlentities(trim($_SESSION['login'])); ?>.jpg" id="avatar" class="box-shadow left" />#}
+        <div class="left">
+            <div id="user-name">Bonjour, {{ app.user }}!</div>
+            <div id="grade"></div>
+        </div>
+        <div id="exit" class="left"><!-- Bouton de deconnection -->
+            {# <a href="<?php url_https(); ?>/includes/deconnexion.php"><img src="<?php url_https(); ?>/img/menus/logout-48x48.png" class="left"/></a>#}
+        </div>
+    </div>
+</div>

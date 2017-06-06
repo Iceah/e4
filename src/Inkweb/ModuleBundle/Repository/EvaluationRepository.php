@@ -3,6 +3,8 @@
 namespace Inkweb\ModuleBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Inkweb\EleveBundle\Entity\Eleve;
+use Inkweb\EleveBundle\InkwebEleveBundle;
 
 /**
  * EvaluationRepository
@@ -12,4 +14,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class EvaluationRepository extends EntityRepository
 {
+
+
+    // Liste les notes pour une date et un module précis
+    // Retourne le nom de l'élève, sa classe et sa note
+    public function listNotesModuleDate($module){
+
+        $query = $this->_em->createQuery(
+            'SELECT e.nom,ev.note,c.nom as nomc 
+            FROM InkwebModuleBundle:Module m,
+            InkwebEleveBundle:Eleve e,
+            InkwebEleveBundle:Classe c,
+            InkwebModuleBundle:Evaluation ev 
+            WHERE m.id = ev.module 
+            AND ev.eleve = e.id 
+            AND ev.module = '. $module .'
+            AND e.classe = c.id'
+        );
+        $results = $query->getResult();
+        return $results;
+    }
 }

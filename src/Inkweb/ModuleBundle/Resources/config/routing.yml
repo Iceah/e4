@@ -4,6 +4,15 @@ inkweb_module_homepage:
 inkweb_module_view:
     path:     /modules/view/{id}
     defaults: { _controller: InkwebModuleBundle:Module:view }
+inkweb_module_edit:
+    path:     /modules/edit/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:edit }
 inkweb_module_add:
     path:     /modules/add/{id}
     defaults: { _controller: InkwebModuleBundle:Module:addCours }
+inkweb_module_addeval:
+    path:     /modules/add/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:addEval }
+inkweb_eval_view:
+    path:     /modules/eval/view/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:viewEval }

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{%  block content %}
+    {% for note in list_note %}
+        {{ note.nom }}
+        {{ note.note }}
+        {{ note.nomc }}
+    {% endfor %}
+
+{%  endblock %}

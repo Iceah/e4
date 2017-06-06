@@ -39,7 +39,7 @@ class Classe
 
 
     /*
-     * @ORM\OneToMany(targetEntity="Inkweb\EleveBundle\Entity\Eleve", mappedBy="nom")
+     * @ORM\OneToMany(targetEntity="Inkweb\EleveBundle\Entity\Eleve", mappedBy="classes")
      */
     private $eleves;
 

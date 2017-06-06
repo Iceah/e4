@@ -81,6 +81,20 @@ class Module
     private $avancement;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="avancement_max", type="integer")
+     */
+    private $avancement_max;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notemodule",type="string", length=255)
+     */
+    private $notemodule;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -253,4 +267,43 @@ class Module
         return $this->avancement;
     }
 
+    /**
+     * Set avancement_max
+     *
+     * @param int $avancement_max
+     * @return Module
+     */
+    public function setAvancementMax($avancement_max)
+    {
+        $this->avancement_max = $avancement_max;
+
+        return $this;
+    }
+
+    /**
+     * Get avancement_max
+     *
+     * @return int
+     */
+    public function getAvancementMax()
+    {
+        return $this->avancement_max;
+    }
+
+    /*
+     * Set note_module
+     * @param string $note_module
+     * @return Module
+     */
+    public function setNoteModule($notemodule){
+        $this->notemodule = $notemodule;
+        return $this;
+    }
+    /*
+     * Get Note Module
+     * @return string
+     */
+    public function getNoteModule(){
+        return $this->notemodule;
+    }
 }
