@@ -11,7 +11,7 @@ inkweb_module_add:
     path:     /modules/add/{id}
     defaults: { _controller: InkwebModuleBundle:Module:addCours }
 inkweb_module_addeval:
-    path:     /modules/add/{id}
+    path:     /modules/addeval/{id}
     defaults: { _controller: InkwebModuleBundle:Module:addEval }
 inkweb_eval_view:
     path:     /modules/eval/view/{id}

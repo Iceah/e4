@@ -4,6 +4,7 @@ namespace Inkweb\ModuleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Inkweb\EleveBundle\Entity\Eleve;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Evaluation
@@ -25,9 +26,9 @@ class Evaluation
     /**
      * @var int
      *
-     * @ORM\Column(name="note", type="integer")
+     * @ORM\Column(name="moyenne", type="integer",nullable=true)
      */
-    private $note;
+    private $moyenne;
 
     /**
      * @var string
@@ -51,7 +52,6 @@ class Evaluation
     private $coef;
 
     /**
-
      * @ORM\ManyToOne(targetEntity="Inkweb\ModuleBundle\Entity\Module")
 
      * @ORM\JoinColumn(nullable=false)
@@ -61,10 +61,10 @@ class Evaluation
     private $module;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Inkweb\EleveBundle\Entity\Eleve")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="Inkweb\ModuleBundle\Entity\Note", mappedBy="evaluation")
      */
-    private $eleve;
+
+    private $notes;
 
 
 
@@ -79,26 +79,13 @@ class Evaluation
     }
 
     /**
-     * Set note
-     *
-     * @param integer $note
-     * @return Evaluation
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
      * Get note
      *
      * @return integer 
      */
-    public function getNote()
+    public function getMoyenne()
     {
-        return $this->note;
+        return $this->moyenne;
     }
 
     /**
@@ -192,26 +179,44 @@ class Evaluation
         return $this->module;
     }
 
-    /**
-     * Set Eleve
-     */
-
-    public function setEleve(Eleve $eleve)
+    public function __construct()
 
     {
 
-        $this->eleve = $eleve;
+        $this->notes = new ArrayCollection();
+
+
+    }
+
+
+    public function addNote(Note $note)
+
+    {
+
+        $this->notes[] = $note;
+        $note->setEvaluation($this);
+
+
         return $this;
 
     }
 
-    /**
-     * Get Eleve
-     */
-    public function getEleve()
+
+    public function removeNote(Note $note)
 
     {
-        return $this->eleve;
+
+        $this->notes->removeElement($note);
+
+    }
+
+
+    public function getNotes()
+
+    {
+
+        return $this->notes;
+
     }
 
 

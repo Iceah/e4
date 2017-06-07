@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    {% for note in list_note %}
+        {{ note.eleve.Nom }} : {{ note.Note }}<br />
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+   {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.type) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.coef) }}
+    {{ form_row(form.notes) }}
+    {{ form_row(form.enregistrer,{'label' : 'Enregistrer'}) }}
+    {{ form_end(form) }}
+
+{%  endblock %}

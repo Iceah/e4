@@ -53,12 +53,6 @@ class Cours
 
     private $module;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Inkweb\EleveBundle\Entity\Classe")
-     * @ORM\JoinColumn(nullable=false)
-    */
-    private $classe;
-
 
 
     /**
@@ -165,27 +159,6 @@ class Cours
         return $this->module;
     }
 
-    /**
-     * Set Classe
-     */
-
-    public function setClasse(Classe $classe)
-
-    {
-
-        $this->classe = $classe;
-        return $this;
-
-    }
-
-    /**
-     * Get Classe
-     */
-    public function getClasse()
-
-    {
-        return $this->classe;
-    }
 
 
 }

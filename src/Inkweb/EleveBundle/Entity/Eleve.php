@@ -2,7 +2,9 @@
 
 namespace Inkweb\EleveBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Inkweb\ModuleBundle\Entity\Note;
 use Inkweb\UserBundle\Entity\User;
 
 /**
@@ -27,6 +29,11 @@ class Eleve extends User
      */
     private  $classe;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Inkweb\ModuleBundle\Entity\Note", mappedBy="eleve")
+     */
+
+    private $notes;
 
     /**
      * Set ine
@@ -64,5 +71,45 @@ class Eleve extends User
      */
     public function  setClasse(Classe $classe = null){
         $this->classe = $classe;
+    }
+
+    public function __construct()
+
+    {
+        parent::__construct();
+        $this->notes = new ArrayCollection();
+
+
+    }
+
+
+    public function addNote(Note $note)
+
+    {
+
+        $this->notes[] = $note;
+        $note->setEleve($this);
+
+
+        return $this;
+
+    }
+
+
+    public function removeNote(Note $note)
+
+    {
+
+        $this->notes->removeElement($note);
+
+    }
+
+
+    public function getNotes()
+
+    {
+
+        return $this->notes;
+
     }
 }

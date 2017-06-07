@@ -3,7 +3,9 @@
 namespace Inkweb\ModuleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Inkweb\EleveBundle\Entity\Classe;
 use Inkweb\ProfesseurBundle\Entity\Professeur;
+use Symfony\Component\Form\Form;
 
 /**
  * Module
@@ -76,9 +78,9 @@ class Module
     /**
      * @var int
      *
-     * @ORM\Column(name="avancement", type="integer")
+     * @ORM\Column(name="avancement", type="integer", nullable=true)
      */
-    private $avancement;
+    private $avancement = 0;
 
     /**
      * @var int
@@ -90,9 +92,15 @@ class Module
     /**
      * @var string
      *
-     * @ORM\Column(name="notemodule",type="string", length=255)
+     * @ORM\Column(name="notemodule",type="string", length=255, nullable=true)
      */
     private $notemodule;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Inkweb\EleveBundle\Entity\Classe")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classe;
 
     /**
      * Get id
@@ -233,7 +241,7 @@ class Module
         return $this->professeur;
     }
 
-    public function setUe(ue $ue){
+    public function setUe(UE $ue){
         $this->ue = $ue;
         return $this;
     }
@@ -242,6 +250,17 @@ class Module
 
     {
         return $this->ue;
+    }
+
+    public function setClasse(Classe $classe){
+        $this->classe = $classe;
+        return $this;
+    }
+
+    public function getClasse()
+
+    {
+        return $this->classe;
     }
 
     /**

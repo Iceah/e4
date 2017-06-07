@@ -29,7 +29,7 @@ class AppKernel extends Kernel
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
-            //new ObHighchartsBundleObHighchartsBundle(),
+            new Khill\Lavacharts\Symfony\Bundle\LavachartsBundle(),
 
             // And finally, the storage and SonataAdminBundle
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),

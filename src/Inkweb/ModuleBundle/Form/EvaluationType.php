@@ -2,37 +2,37 @@
 
 namespace Inkweb\ModuleBundle\Form;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
 use function Sodium\add;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class EvaluationType extends AbstractType
 {
-    public function __construct(EntityManager $em)
-    {
-        $this->entityManager = $em;
-    }
 
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
-            ->add('note');
-        $listener = new EleveListener($builder->getFormFactory(),$this->entityManager);
-        $builder->addEventSubscriber($listener);
+            ->add('type',TextType::class)
+            ->add('date',DateTimeType::class)
+            ->add('coef',NumberType::class)
+
+            ->add('notes',CollectionType::class, array(
+                'entry_type' =>  NoteType::class,
+                'allow_add' => true,
+            ))
+            ->add('enregistrer',SubmitType::class)
+        ;
     }
 
     

@@ -30,11 +30,6 @@ class CoursType extends AbstractType
                 'choice_label' => 'nomMat',
                 'multiple' => false
             ))
-            ->add('classe',EntityType::class,array(
-                'class'=>'InkwebEleveBundle:Classe',
-                'choice_label' => 'nom',
-                'multiple' => false
-            ))
             ->add('Enregistrer', SubmitType::class)
             ;
     }

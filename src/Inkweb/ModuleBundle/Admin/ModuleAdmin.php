@@ -29,10 +29,15 @@ class ModuleAdmin extends AbstractAdmin
                 'class' => 'Inkweb\ModuleBundle\Entity\UE',
                 'property' => 'nomue'
             ))
+            ->add('classe','sonata_type_model',array(
+                'class' => 'Inkweb\EleveBundle\Entity\Classe',
+                'property' => 'nom'
+            ))
             ->add('codeMat','text')
             ->add('coefMat','number')
             ->add('dateDebut','date')
             ->add('dateFin','date')
+            ->add('avancement_max','number')
         ;
     }
 

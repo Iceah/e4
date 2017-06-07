@@ -11,7 +11,6 @@
     <div>{{ module.Avancement }} heure(s) / {{ module.AvancementMax }} heure(s)</div>
     <h2>Bloc-notes</h2>
     <p>{{ module.notemodule }}</p>
-    {#{{ chart(linechart) }}#}
     <table>
         <tr>
             <th colspan="2"><h3>Prochains cours</h3></th>
@@ -19,7 +18,7 @@
         {% for cours in list_cours %}
         <tr>
             <td>{{ cours.Heure|date('H:i') }}</td>
-            <td>{{ cours.Classe.Nom }}</td>
+            <td>{{ cours.Module.Classe.Nom }}</td>
         </tr>
         <tr>
             <td>Date : {{ cours.Date|date("d/m") }}</td>
@@ -35,7 +34,7 @@
         {% for eval in list_eval %}
         <tr>
             <td>Date : </td>
-            <td><a href="{{ path('inkweb_eval_view',{'id': module.Id} ) }}">{{ eval.Date |date("d/m") }}</a></td>
+            <td><a href="{{ path('inkweb_eval_view',{'id': eval.Id} ) }}">{{ eval.Date |date("d/m") }}</a></td>
         </tr>
         {% endfor %}
     </table>
