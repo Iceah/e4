@@ -1,8 +1,33 @@
 {% extends 'base.html.twig' %}
-<h1>Dashboard</h1>
-<div class="container">
-    {# Liste des classes du prof #}
-    <div></div>
-    {# Liste des matières du prof #}
-    <div></div>
-</div>
+{% block content %}
+    <h1>Dashboard</h1>
+    <div class="">
+        <h2>Dernièrement sur le réseau EPSI</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLXJE6trLX4Avm9ahlUCFme9EtC02pFtIP" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="">
+        <h2>Mes modules</h2>
+        <div class="table table-striped table-bordered table-hover">
+            <table>
+                {% if list_module is empty %}
+                    Vous n'enseignez aucun module pour le moment.
+                {% else %}
+                    {% for module in list_module %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('inkweb_module_view',{'id': module.Id } ) }}"> {{ module.nomMat }}</a><br/>
+                            </td>
+                            <td>
+                                Commence le : {{ module.DateDebut |date('d/m') }}<br/>
+                                Termine le : {{ module.DateFin |date('d/m') }}
+                            </td>
+                            <td>
+                                {{ module.avancement }} heure(s) de réalisées.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

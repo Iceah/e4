@@ -28,8 +28,8 @@ class NoteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Note::class,
-        ));
+            'data_class' => Note::class,)
+        );
     }
 
     /**

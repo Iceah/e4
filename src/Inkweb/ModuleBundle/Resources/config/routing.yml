@@ -10,9 +10,17 @@ inkweb_module_edit:
 inkweb_module_add:
     path:     /modules/add/{id}
     defaults: { _controller: InkwebModuleBundle:Module:addCours }
+
+inkweb_cours_del:
+    path:     /modules/del/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:delCours }
+
 inkweb_module_addeval:
     path:     /modules/addeval/{id}
     defaults: { _controller: InkwebModuleBundle:Module:addEval }
 inkweb_eval_view:
     path:     /modules/eval/view/{id}
     defaults: { _controller: InkwebModuleBundle:Module:viewEval }
+inkweb_eval_del:
+    path:     /modules/eval/del/{id}
+    defaults: { _controller: InkwebModuleBundle:Module:delEval }

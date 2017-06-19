@@ -1,3 +1,3 @@
 inkweb_professeur_homepage:
     path:     /prof/
-    defaults: { _controller: InkwebProfesseurBundle:Professeur:index }
+    defaults: { _controller: InkwebProfesseurBundle:Professeur:view }

@@ -12,4 +12,41 @@ use Doctrine\ORM\EntityRepository;
  */
 class EleveRepository extends EntityRepository
 {
+    public function getNotesModule($module,$eleve){
+        $query = $this->_em->createQuery(
+            'SELECT n
+          FROM InkwebEleveBundle:Eleve e,
+           InkwebModuleBundle:Module m,
+           InkwebModuleBundle:Evaluation ev,
+           InkwebModuleBundle:Note n
+           WHERE e.id = n.eleve
+           AND n.evaluation = ev.id
+           AND m.id ='. $module .'
+           AND e.id = '.$eleve.'
+           AND ev.module = m.id'
+        );
+
+        $results = $query
+            ->getResult();
+        return $results;
+    }
+
+    public function getMoyenneModule($module,$eleve){
+        $query = $this->_em->createQuery(
+            'SELECT AVG (n.note)
+          FROM InkwebEleveBundle:Eleve e,
+           InkwebModuleBundle:Module m,
+           InkwebModuleBundle:Evaluation ev,
+           InkwebModuleBundle:Note n
+           WHERE e.id = n.eleve
+           AND n.evaluation = ev.id
+           AND m.id ='. $module .'
+           AND e.id = '.$eleve.'
+           AND ev.module = m.id'
+        );
+
+        $results = $query
+            ->getResult();
+        return $results;
+    }
 }

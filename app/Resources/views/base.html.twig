@@ -66,7 +66,7 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    Dashboard
+                    <a href="{{ path('inkweb_dashboard_homepage') }}">Dashboard</a>
                 </li>
                 <li class="dropdown">
                     <a href="{{  path('inkweb_module_homepage') }}"> Modules</a>
@@ -86,6 +86,7 @@
         <!-- /.sidebar-collapse -->
 
         <div id="page-wrapper" style="min-height: 912px">
+            <a href="javascript:history.go(-1)"><button class="btn btn-danger">Retour</button></a>
             <!-- Contenu des bundles -->
             {% block content %}{% endblock %}
         </div>

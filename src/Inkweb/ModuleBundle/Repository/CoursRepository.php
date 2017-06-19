@@ -19,7 +19,7 @@ class CoursRepository extends EntityRepository
         $queryBuilder
             ->where('a.module = :module')
                 ->setParameter('module',$module)
-            ->andWhere('a.date > :date')
+            ->andWhere('a.date >= :date')
                 ->setParameter('date',$date)
             ->orderBy('a.date','DESC')
             ->orderBy('a.heure','DESC')

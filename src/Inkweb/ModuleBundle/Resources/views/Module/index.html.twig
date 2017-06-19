@@ -5,18 +5,21 @@
             <tr>
                 <th colspan="2"><h1>Modules disponibles</h1></th>
             </tr>
-            {% for module in list_module %}
-                <tr>
-                    <td>
-                        <a href="{{ path('inkweb_module_view',{'id': module.Id } )}}"> {{ module.nomMat }}</a><br />
-                    </td>
-                    <td>
-                        Commence le : {{ module.DateDebut |date('d/m')}}<br />
-                        Termine le : {{ module.DateFin |date('d/m') }}
-                    </td>
-                    {#<td><button id="btnDeleteModule" class="btn btn-small btn-danger"><i class="fa fa-trash"></i></button></td>#}
-                </tr>
-            {% endfor %}
+            {% if list_module is empty %}
+                Vous n'enseignez aucun module pour le moment.
+            {% else %}
+                {% for module in list_module %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('inkweb_module_view',{'id': module.Id } ) }}"> {{ module.nomMat }}</a><br/>
+                        </td>
+                        <td>
+                            Commence le : {{ module.DateDebut |date('d/m') }}<br/>
+                            Termine le : {{ module.DateFin |date('d/m') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
         </table>
     </div>
 

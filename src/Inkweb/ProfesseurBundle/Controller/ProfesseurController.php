@@ -16,12 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProfesseurController extends Controller
 {
-    // Liste des professeurs
-    public function indexAction() {
+    public function viewAction(){
         $repository = $this->getDoctrine()
             ->getManager()
-            ->getRepository('Inkweb\ProfesseurBundle:Professeur');
-        $list_prof = $repository->findAll();
-        return $this->render('Inkweb\ProfesseurBundle:Professeur:index.html.twig',array('list_prof' => $list_prof));
+            ->getRepository('InkwebProfesseurBundle:Professeur');
+        $user = $this->getUser();
+        $prof = $repository->find($user->getId());
+        return $this->render('InkwebUserBundle:Profile:show.html.twig',
+            array('prof'=>$prof));
     }
 }

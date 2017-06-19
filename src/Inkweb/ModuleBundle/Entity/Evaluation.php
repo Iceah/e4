@@ -40,7 +40,7 @@ class Evaluation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date")
      */
     private $date;
 
@@ -61,7 +61,7 @@ class Evaluation
     private $module;
 
     /**
-     * @ORM\OneToMany(targetEntity="Inkweb\ModuleBundle\Entity\Note", mappedBy="evaluation")
+     * @ORM\OneToMany(targetEntity="Inkweb\ModuleBundle\Entity\Note", mappedBy="evaluation" , cascade={"persist", "remove"}, orphanRemoval=true)
      */
 
     private $notes;
@@ -85,6 +85,12 @@ class Evaluation
      */
     public function getMoyenne()
     {
+        $array_notes = $this->GetNotes();
+        $sum=0;
+        foreach ($array_notes as $note){
+            $sum = $sum + $note;
+        }
+        $this->moyenne = $sum / count($array_notes);
         return $this->moyenne;
     }
 

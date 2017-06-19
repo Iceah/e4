@@ -18,8 +18,20 @@ class ModuleController extends Controller
 {
     public function indexAction()
     {
+        $prof = $this->getUser();
         $repository = $this->getDoctrine()->getManager()->getRepository('InkwebModuleBundle:Module');
-        $list_modules = $repository->findAll();
+
+        // Affiche les modules enseignés par le professeur
+        $list_modules = $repository->findBy(array('professeur' => $prof));
+
+        // Si admin, affiche tout les modules
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $list_modules = $repository->findAll();
+        }
+
+
+
+
 
         return $this->render('InkwebModuleBundle:Module:index.html.twig', array('list_module' => $list_modules));
     }
@@ -38,6 +50,7 @@ class ModuleController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('InkwebModuleBundle:Evaluation');
         $liste_eval = $repository->findBy(array('module'=> $id));
 
+
         return $this->render('InkwebModuleBundle:Module:view.html.twig',
             array(
                 'module'=>$module,
@@ -49,9 +62,11 @@ class ModuleController extends Controller
 
 
     public function viewEvalAction($id){
+
         // Afficher pour une évaluation la liste des notes
         $repository = $this->getDoctrine()->getManager()->getRepository('InkwebModuleBundle:Note');
         $liste_notes = $repository->findBy(array('evaluation'=> $id));
+
         return $this->render('InkwebModuleBundle:Module:vieweval.html.twig',
             array('list_note'=> $liste_notes));
     }
@@ -113,7 +128,8 @@ class ModuleController extends Controller
             return $this->redirectToRoute('inkweb_module_homepage');
         }
 
-        return $this->render('InkwebModuleBundle:Module:addev.html.twig',array('eleves'=>$liste_eleve,
+        return $this->render('InkwebModuleBundle:Module:addev.html.twig',array(
+            'eleves'=>$liste_eleve,
             'form'=> $form->createView()
         ));
 
@@ -141,18 +157,29 @@ class ModuleController extends Controller
             ));
     }
 
-    public function deleteAction(Request $request, Module $module)
+    public function delEvalAction(Request $request, Evaluation $evaluation)
     {
-        if (!$this->isCsrfTokenValid(self::DELETE_ARTICLE_TOKEN, $request->headers->get(self::DELETE_ARTICLE_HEADER))) {
-            throw $this->createAccessDeniedException();
-        }
+
 
         $om = $this->getDoctrine()->getManager();
-        $om->remove($module);
+        $om->remove($evaluation);
         $om->flush();
 
-        $this->addFlash('success', 'Module supprimé.');
+        $this->addFlash('success', 'Evaluation supprimée.');
 
-        return new JsonResponse(['url' => $this->render('InkwebModuleBundle:index.html.twig')]);
+        return $this->redirectToRoute('inkweb_module_homepage');
+    }
+
+    public function delCoursAction(Request $request, Cours $cours)
+    {
+
+
+        $om = $this->getDoctrine()->getManager();
+        $om->remove($cours);
+        $om->flush();
+
+        $this->addFlash('success', 'Cours supprimé.');
+
+        return $this->redirectToRoute('inkweb_module_homepage');
     }
 }

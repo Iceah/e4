@@ -43,6 +43,11 @@ class Classe
      */
     private $eleves;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Inkweb\ModuleBundle\Entity\Module", mappedBy="classe" )
+     */
+
+    private $modules;
 
     /**
      * Get id
@@ -105,8 +110,7 @@ class Classe
     {
 
         $this->eleves = new ArrayCollection();
-
-        // ...
+        $this->modules = new ArrayCollection();
 
     }
 
@@ -135,6 +139,14 @@ class Classe
     {
 
         return $this->eleves;
+
+    }
+
+    public function getModules()
+
+    {
+
+        return $this->modules;
 
     }
     

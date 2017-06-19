@@ -302,5 +302,10 @@ abstract class User extends BaseUser
         return $this;
     }
 
+    public function __construct()
+    {
+        parent::__construct();
+
+    }
 
 }

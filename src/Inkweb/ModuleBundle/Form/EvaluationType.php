@@ -2,9 +2,10 @@
 
 namespace Inkweb\ModuleBundle\Form;
 
+use Inkweb\EleveBundle\Entity\Eleve;
 use function Sodium\add;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,10 +25,11 @@ class EvaluationType extends AbstractType
 
         $builder
             ->add('type',TextType::class)
-            ->add('date',DateTimeType::class)
+            ->add('date',DateType::class)
             ->add('coef',NumberType::class)
 
             ->add('notes',CollectionType::class, array(
+                'entry_options' => ['label'=>""],
                 'entry_type' =>  NoteType::class,
                 'allow_add' => true,
             ))

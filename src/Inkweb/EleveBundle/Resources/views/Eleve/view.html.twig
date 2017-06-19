@@ -11,7 +11,8 @@
                 <tr>
                     <td>Prenom</td>
                     <td>{{ eleve.Prenom }}</td>
-                </tr><tr>
+                </tr>
+                <tr>
                     <td>Nom</td>
                     <td>{{ eleve.Nom }}</td>
                 </tr>
@@ -45,5 +46,46 @@
                 </tr>
             </table>
         </div>
+
+        <div class="table-responsive col-md-6">
+            <table class="table table-striped">
+                <tr>
+                <th>Module</th>
+                </tr>
+                {% for module in modules %}
+                    <tr>
+                        <td>{{ module.NomMat }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table-responsive col-md-6">
+            <table class="table table-striped" id="notes_tab">
+                <tr>
+                <th>Notes</th>
+                <th>Moyenne</th>
+                </tr>
+                {% for module in list_notes_module %}
+                    <tr>
+                        {% if module.notes is empty %}
+                            <td colspan="2" style="text-align: center;">Non évalué</td>
+                        {% else %}
+                            <td>
+                                {% for note in module.notes %}
+                                    {{ note.Note }}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for moyenne in module.moyenne.0 %}
+                                    {{ moyenne|round(2,'floor') }}
+                                {% endfor %}
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
     </div>
 {% endblock %}

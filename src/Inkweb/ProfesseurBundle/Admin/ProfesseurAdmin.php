@@ -40,6 +40,12 @@ class ProfesseurAdmin extends AbstractAdmin
                     'second_options' => array('label' => 'form.password_confirmation'),
                     'invalid_message' => 'fos_user.password.mismatch',
                 ))
+                ->add(
+                    'roles', 'choice', [
+                    'choices' => ['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_USER' => 'ROLE_USER', 'ROLE_PROF' => 'ROLE_PROF'],
+                    'expanded' => true,
+                    'multiple' => true,
+                ])
             ->end()
         ;
     }

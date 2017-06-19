@@ -56,4 +56,9 @@ class Professeur extends User
     {
         return $this->dateEmbauche;
     }
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }

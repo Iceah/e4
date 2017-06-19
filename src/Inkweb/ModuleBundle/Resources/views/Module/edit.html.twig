@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block content %}
     <h1>Mise à jour d'un module</h1>
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-<table>
-    <tr>
-        <td>{{ form_row(form.avancement) }}</td>
-    </tr>
-    <tr>
-        <td>{{ form_row(form.notemodule, {'label' : 'Mise à jour du cahier de texte'}) }}</td>
-    </tr>
-    <tr>
-        <td>{{ form_row(form.enregistrer, { 'label': 'Enregistrer' }) }}</td>
-    </tr>
-</table>
-    {{ form_end(form) }}
+    <div class="well">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="form-group">
+            {{ form_label(form.avancement, "Avancement au sein du module (en heures)", {'label_attr': {'class': 'col-xs-6 control-label'}}) }}
+            {{ form_errors(form.avancement) }}
+            <div class="col-xs-6">
+                {{ form_widget(form.avancement, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.notemodule, "Mise à jour du cahier de texte", {'label_attr': {'class': 'col-xs-6 control-label'}}) }}
+            {{ form_errors(form.notemodule) }}
+            <div class="col-xs-6">
+                {{ form_widget(form.notemodule, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        {{ form_row(form.avancement) }}
+        {{ form_row(form.notemodule) }}
+        {{ form_widget(form.enregistrer, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 

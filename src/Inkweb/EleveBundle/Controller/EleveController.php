@@ -10,30 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EleveController extends Controller
 {
-    // Modifier un étudiant
-    public function editAction($id, Request $request){
-        /*
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('InkwebEleveBundle:Eleve');
-        $eleve = $repository->find($id);
-
-        $form = $this->createForm(new EleveType(),$eleve);
-
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($eleve);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->add('notice', 'Elève bien enregistrée.');
-            return $this->redirect($this->generateUrl('inkweb_eleve_view', array('id' => $eleve->getId())));
-        }
-        return $this->render('InkwebEleveBundle:Eleve:add.html.twig', array(
-            'form' => $form->createView(),
-        ));
-*/
-    }
 
     // Voir le profil d'un étudiant
     public function viewAction($id){
@@ -41,19 +17,34 @@ class EleveController extends Controller
             ->getManager()
             ->getRepository('InkwebEleveBundle:Eleve');
         $eleve = $repository->find($id);
+        // Liste des modules où l'élève est inscrit
+        $module_list = $eleve->getClasse()->getModules();
 
-        // Liste de toutes les classes
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('InkwebEleveBundle:Classe');
-        $classes = $repository->findAll();
+        // Liste des notes
+        $notes = $eleve->getNotes();
+
+        // Liste des notes par module
+        // [$module1 => 1,2,3,
+        // $module2 => 12,4,5]
+        $module_notes = array();
+        foreach ($module_list as $module){
+            $module_notes[$module->getId()] = array(
+                'notes'=>$repository->getNotesModule($module->getId(),$id),
+                'moyenne'=>$repository->getMoyenneModule($module->getId(),$id),
+            ); // return un tableau de notes par module
+        }
+
+
+
+
         if (null === $eleve){
             throw new NotFoundHttpException("L'élève d'id " . $id. " n'existe pas");
         }
         return $this->render(
             'InkwebEleveBundle:Eleve:view.html.twig',
             array('id' => $id, 'eleve' => $eleve,
-                'list_classe' => $classes
+                'list_notes_module' => $module_notes,
+                'modules' => $module_list,
                 ) // On passe les variables souhaitées dans le twig via l'array
         );
     }

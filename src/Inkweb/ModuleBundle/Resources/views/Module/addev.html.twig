@@ -1,12 +1,49 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-   {{ form_start(form) }}
-    {{ form_errors(form) }}
-    {{ form_row(form.type) }}
-    {{ form_row(form.date) }}
-    {{ form_row(form.coef) }}
-    {{ form_row(form.notes) }}
-    {{ form_row(form.enregistrer,{'label' : 'Enregistrer'}) }}
-    {{ form_end(form) }}
-
+    <h1>Ajouter une évaluation</h1>
+    <div class="well">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="form-group">
+            {{ form_label(form.type,"Type de devoir (CCF/Partiel)",{'label_attr':{'class':'col-xs-6 control-label'}}) }}
+            {{ form_errors(form.type) }}
+            <div class="col-xs-6">
+                {{ form_widget(form.type,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.date,"Date de l'examen",{'label_attr':{'class':'col-xs-6 control-label'}}) }}
+            {{ form_errors(form.date) }}
+            <div class="col-xs-6">
+                {{ form_widget(form.date,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.coef,"Coefficient",{'label_attr':{'class':'col-xs-6 control-label'}}) }}
+            {{ form_errors(form.coef) }}
+            <div class="col-xs-6">
+                {{ form_widget(form.coef,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <table style="float: left">
+            <tr><td style="padding: 12px"></td></tr>
+            {% for eleve in eleves %}
+                <tr>
+                    <td style="padding: 3px">
+                        {{ eleve.nom }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div>
+            {{ form_row(form.notes) }}
+        </div>
+        {{ form_row(form.type) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.coef) }}
+        {{ form_row(form.notes) }}
+        <br />
+        {{ form_widget(form.enregistrer, {'attr': {'class':'btn btn-primary'}}) }}
+        {{ form_end(form) }}
+    </div>
 {%  endblock %}
